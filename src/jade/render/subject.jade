@@ -1,0 +1,57 @@
+extends ../particles/base.jade
+
+block content
+  //- Content begin
+  section#content
+    .container
+      .row
+        .col-md-2
+          img(src="http://dummyimage.com/100x100")
+        .col-md-7
+          h1 Физика
+          p.lead Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+          br
+          p.lead Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+        .col-md-3
+          .panel.panel-default
+            .panel-body
+              a.btn.btn-lg.btn-default Зарегестрироваться
+      .row
+        .col-md-12
+          h2 Прогресс занятий
+          img(src="http://dummyimage.com/1200x40" width="100%")
+      .row
+        .col-md-12
+          h2 7 класс
+      .row
+        .col-md-3
+          .panel.panel-default
+            .panel-body.bg-info
+              p.lead Что такое физика?
+              p 32 занятия
+              h3 Завершено!
+              p Оценка 78%
+              a.btn.btn-default.btn-sm(href="{% url 'chapter' %}") Повторить
+        .col-md-3
+          .panel.panel-default
+            .panel-body.bg-danger
+              p.lead Механика. Часть 1
+              p 32 занятия
+              h3 Недоступно
+      .row
+        .col-md-12
+          h2 8 класс
+      .row
+        .col-md-3
+          .panel.panel-default
+            .panel-body.bg-warning
+              p.lead Тепловые процессы
+              p 32 занятия
+              h3 Прогресс: 0%
+              a.btn.btn-default.btn-sm(href="{% url 'chapter' %}") Продолжить
+        .col-md-3
+          .panel.panel-default
+            .panel-body.bg-danger
+              p.lead Механика. Часть 2
+              p 32 занятия
+              h3 Недоступно

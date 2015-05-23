@@ -1,0 +1,81 @@
+extends ../particles/base.jade
+
+block content
+  //- Content begin
+  section#content
+    .container
+      .row
+        .col-md-2
+          img(src="http://dummyimage.com/100x100")
+        .col-md-7
+          p.lead Физика
+          h1 Тепловые процессы
+          br
+          p 46 часов
+          p.lead Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+          a.btn.btn-lg.btn-default Я уже прошел данную тему
+        .col-md-3
+      br
+      br
+      br
+      .row
+        .col-md-9
+          #accordion.panel-group(role="tablist" aria-multiselectable="true")
+            .panel.panel-default
+              #headingOne.panel-heading(role="tab")
+                h4.panel-title
+                  a(data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne")
+                    | 1. Тепловое движение. Температура.
+              #collapseOne.panel-collapse.collapse.in(role="tabpanel" aria-labelledby="headingOne")
+                .panel-body
+                  .row
+                    .col-md-10
+                      h4
+                        |День 1
+                        |&nbsp;
+                        small
+                          a(href="{% url 'paragraph' %}") Начать
+                    .col-md-2.text-right
+                      p.lead 35 мин.
+                  .row
+                    .col-md-11.col-md-offset-1
+                      p.lead
+                        a(href="{% url 'paragraph' %}") Тепловые процессы
+                      p.lead Температура
+                      p.lead Направление движения тепла
+                  br
+                  .row
+                    .col-md-10
+                      h4
+                        |День 1
+                        |&nbsp;
+                        small
+                          a(href="") Начать
+                    .col-md-2.text-right
+                      p.lead 35 мин.
+                  .row
+                    .col-md-11.col-md-offset-1
+                      p.lead Тепловые процессы
+                      p.lead Температура
+                      p.lead Направление движения тепла
+            .panel.panel-default
+              #headingTwo.panel-heading(role="tab")
+                h4.panel-title
+                  a(data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo")
+                    | 2. Тепловое движение. Температура.
+              #collapseTwo.panel-collapse.collapse(role="tabpanel" aria-labelledby="headingTwo")
+                .panel-body
+                  .row
+                    .col-md-10
+                      h4
+                        |День 1
+                        |&nbsp;
+                        small
+                          a(href="") Начать
+                    .col-md-2.text-right
+                      p.lead 35 мин.
+                  .row
+                    .col-md-11.col-md-offset-1
+                      p.lead Тепловые процессы
+                      p.lead Температура
+                      p.lead Направление движения тепла

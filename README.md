@@ -26,6 +26,7 @@ npm i gulp-sass --save
 npm i gulp-sourcemaps --save
 npm i gulp-rigger --save
 npm i gulp-watch --save
+npm i gulp-jade --save
 ```
 6) Далее нужен пакетный менеджер bower для удобной работы с версиями библиотек:
 `bower init`

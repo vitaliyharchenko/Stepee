@@ -1,0 +1,39 @@
+extends ../particles/base.jade
+
+block content
+  //- Content begin
+  section#content
+    .container
+      .row
+        .col-md-8
+          h1 Доступные предметы
+          p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+        .col-md-4
+          a.btn.btn-lg.btn-default Зарегестрироваться
+      .row
+        .col-md-4.text-center
+          .panel.panel-default
+            .panel-body
+              img(src="http://dummyimage.com/160x160", alt="")
+              a(href="{% url 'subject' %}")
+                h2 Физика
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, nisi.
+        .col-md-4.text-center
+          .panel.panel-default
+            .panel-body
+              img(src="http://dummyimage.com/160x160", alt="")
+              a(href="{% url 'subject' %}")
+                h2 Физика
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, nisi.
+        .col-md-4.text-center
+          .panel.panel-default
+            .panel-body
+              img(src="http://dummyimage.com/160x160", alt="")
+              a(href="{% url 'subject' %}")
+                h2 Физика
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, nisi.
+      .row
+        .col-md-12
+          h2 Смотреть пример урока
+          p.text-center
+            img(src="http://dummyimage.com/1200x600" width="100%")
