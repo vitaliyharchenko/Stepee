@@ -1,57 +1,57 @@
 extends ../particles/base.jade
 
+//TODO: view logic for chapters and status
 block content
-  //- Content begin
-  section#content
+  .container-fluid.container-first.bg-info
     .container
-      .row
-        .col-md-2
-          img(src="http://dummyimage.com/100x100")
-        .col-md-7
-          h1 Физика
-          p.lead Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
-          br
-          p.lead Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
-        .col-md-3
+      .row.extra-bottom-padding
+        .col-md-2.col-sm-3.col-xs-3
+          img(src="http://dummyimage.com/400x400" width="100%")
+        .col-md-7.col-sm-9.col-xs-9
+          h1.page-first {{ subject.title }}
+          p.lead {{ subject.description }}
+        .col-md-3.col-sm-12.col-xs-12
+          br.visible-sm.visible-xs
           .panel.panel-default
             .panel-body
-              a.btn.btn-lg.btn-default Зарегестрироваться
-      .row
-        .col-md-12
-          h2 Прогресс занятий
-          img(src="http://dummyimage.com/1200x40" width="100%")
-      .row
-        .col-md-12
-          h2 7 класс
-      .row
-        .col-md-3
+              h4.page-first Рейтинг учеников
+              ol
+                li Вася Пупкин
+                li Вася Пупкин
+                li Вася Пупкин
+      .row.extra-bottom-padding
+        |{% if status and status != 'closed' %}
+        .col-md-6
           .panel.panel-default
-            .panel-body.bg-info
-              p.lead Что такое физика?
-              p 32 занятия
-              h3 Завершено!
-              p Оценка 78%
-              a.btn.btn-default.btn-sm(href="{% url 'chapter' %}") Повторить
-        .col-md-3
-          .panel.panel-default
-            .panel-body.bg-danger
-              p.lead Механика. Часть 1
-              p 32 занятия
-              h3 Недоступно
-      .row
-        .col-md-12
-          h2 8 класс
-      .row
-        .col-md-3
-          .panel.panel-default
-            .panel-body.bg-warning
-              p.lead Тепловые процессы
-              p 32 занятия
-              h3 Прогресс: 0%
-              a.btn.btn-default.btn-sm(href="{% url 'chapter' %}") Продолжить
-        .col-md-3
-          .panel.panel-default
-            .panel-body.bg-danger
-              p.lead Механика. Часть 2
-              p 32 занятия
-              h3 Недоступно
+            .panel-body
+              h2.page-header.page-first Ваш прогресс: {{ score_percent }}%
+              .progress
+                .progress-bar(role="progressbar" aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="{{ max_score }}" style="width: {{ score_percent }}%;")
+                  |{{ score }}/{{ max_score }}
+              p.lead Текущая глава:&nbsp;
+                a(href="{% url 'chapter' 1 %}") Тепловые процессы
+        .col-md-6
+          p {{ status }}
+        |{% else %}
+        .col-md-6
+          button.btn.btn-default(href="") Начать курс
+        |{% endif %}
+  .container
+    .row
+      .col-md-12
+        |{% for grade, chapters in dict.items %}
+        h2.page-header {{ grade }}
+        .row
+          |{% for chapter in chapters %}
+          .col-lg-3.col-md-4.col-xs-6
+            .panel.panel-default
+              .panel-body(class="{% cycle 'bg-info' 'bg-warning' 'bg-danger' %}")
+                p.lead {{ chapter.title }}
+                p 32 занятия
+                h3 Завершено!
+                p Оценка 78%
+                a.btn.btn-default.btn-sm(href="{% url 'chapter' chapter.id %}") Повторить
+          |{% endfor %}
+        |{% endfor %}
+        br
+        br

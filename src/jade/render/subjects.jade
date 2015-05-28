@@ -1,39 +1,32 @@
 extends ../particles/base.jade
 
 block content
-  //- Content begin
-  section#content
-    .container
-      .row
-        .col-md-8
-          h1 Доступные предметы
-          p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
-        .col-md-4
-          a.btn.btn-lg.btn-default Зарегестрироваться
-      .row
-        .col-md-4.text-center
-          .panel.panel-default
-            .panel-body
-              img(src="http://dummyimage.com/160x160", alt="")
-              a(href="{% url 'subject' %}")
-                h2 Физика
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, nisi.
-        .col-md-4.text-center
-          .panel.panel-default
-            .panel-body
-              img(src="http://dummyimage.com/160x160", alt="")
-              a(href="{% url 'subject' %}")
-                h2 Физика
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, nisi.
-        .col-md-4.text-center
-          .panel.panel-default
-            .panel-body
-              img(src="http://dummyimage.com/160x160", alt="")
-              a(href="{% url 'subject' %}")
-                h2 Физика
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, nisi.
-      .row
-        .col-md-12
-          h2 Смотреть пример урока
-          p.text-center
-            img(src="http://dummyimage.com/1200x600" width="100%")
+  .container.container-first
+    .row
+      .col-md-12
+        h1.page-header.page-first Доступные предметы
+    .row
+      .col-lg-9.col-sm-8.col-xs-6
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+      .col-lg-3.col-sm-4.col-xs-6.text-right
+        a.btn.btn-lg.btn-default.btn-block Зарегистрироваться
+    .row
+      br
+      |{% for subject in subjects %}
+      .col-lg-3.col-md-4.col-sm-6.col-xs-6.text-center
+        .panel.panel-default
+          .panel-body
+            .row.text-left
+              .col-md-5.col-sm-5.col-xs-5
+                img(src="http://dummyimage.com/80x80", alt="", width="100%")
+              .col-md-7.col-sm-7.col-xs-7
+                a(href="{% url 'subject' subject.id %}")
+                  h3.h4 {{ subject.title }}
+      |{% endfor %}
+    .row
+      .col-md-12
+        h2.page-header Смотреть пример урока
+        p.text-center
+          img(src="http://dummyimage.com/1200x600" width="100%")
+          br
+          br

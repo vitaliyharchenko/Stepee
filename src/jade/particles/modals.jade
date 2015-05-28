@@ -1,0 +1,55 @@
+block modals
+  #loginModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true")
+    .modal-dialog
+      .modal-content
+        .modal-header.text-center
+          h2.modal-title Авторизация
+          a(href="#" data-dismiss="modal" data-toggle="modal" data-target="#regModal") Я не зарегистрирован
+        .modal-body
+          .container-fluid
+            .row
+              .col-xs-6
+                include loginform.jade
+              .col-xs-6
+                .form-group
+                  a.btn.btn-default.btn-block(href="#") ВКОНТАКТЕ
+                .form-group
+                  a.btn.btn-default.btn-block(href="#") FACEBOOK
+                .form-group
+                  a.btn.btn-default.btn-block(href="#") GOOGLE
+  //TODO: regmodal
+  //#regModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="regModalLabel" aria-hidden="true")
+  //  .modal-dialog
+  //    .modal-content
+  //      .modal-header.text-center
+  //        h3.modal-title Зарегистрируйся и учись бесплатно
+  //        a(href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal") Я уже зарегистрирован
+  //      .modal-body
+  //        .container-fluid
+  //          .row
+  //            .col-xs-6
+  //              form#loginForm(method="post" autocomplete="on" action="." enctype="multipart/form-data")
+  //                |{% csrf_token %}
+  //                .form-group
+  //                  input.form-control(type="text" placeholder="Фамилия")
+  //                .form-group
+  //                  input.form-control(type="text" placeholder="Имя")
+  //                .form-group
+  //                  select.form-control
+  //                    option 7 класс
+  //                    option 8 класс
+  //                    option 9 класс
+  //                    option 10 класс
+  //                    option 11 класс
+  //                .form-group
+  //                  input.form-control(type="email" placeholder="Email")
+  //                .form-group
+  //                  input.form-control(type="password" placeholder="Пароль")
+  //                button.btn.btn-default.btn-lg.btn-block(type="submit") Войти в Stepee
+  //            .col-xs-6
+  //              .form-group
+  //                a.btn.btn-default.btn-block(href="#") ВКОНТАКТЕ
+  //              .form-group
+  //                a.btn.btn-default.btn-block(href="#") FACEBOOK
+  //              .form-group
+  //                a.btn.btn-default.btn-block(href="#") GOOGLE

@@ -1,0 +1,41 @@
+extends ../particles/base.jade
+block content
+  .container-fluid.container-first
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-heading
+            .row
+              .col-xs-12.text-center
+                h2 Задание
+          .panel-body
+            .row
+              .col-xs-12
+                p.lead {{ exercise.text }}
+              .col-xs-12
+                form#exerciseFrom(method="post" autocomplete="on" action="{% url 'exercise' 3 %}")
+                  |{% csrf_token %}
+
+                  |{% if exercise.is_test %}
+
+                  p Варианты ответов:
+                  |{% for option in options %}
+                  .checkbox
+                    label
+                      input(type="checkbox" value="{{ option.option_text }}")
+                      | {{ option.option_text }}
+                  |{% endfor %}
+
+                  |{% else %}
+
+                  .row
+                    .col-sm-3
+                      input.form-control(type="text" placeholder="Введите ответ")
+
+                  |{% endif %}
+                  hr
+                  .row
+                    .col-xs-6
+                      button.btn.btn-warning(type="submit") Ответить
+                    .col-xs-6.text-right
+                      a.btn.btn-default(href="") Сдаться

@@ -2,6 +2,36 @@
 Educational web service
 
 # Установка и настройка #
+1) Install postgres (`brew install postgres`)
+`initdb /usr/local/var/vitaliyharchenko
+createdb
+psql
+CREATE USER stepee WITH PASSWORD '4203';
+CREATE DATABASE stepee OWNER stepee;
+ALTER USER stepee CREATEDB;`
+2) Install psycopg2
+`pip install psycopg2`
+3) Создание юзера в базе данных
+`vitaliyharchenko 4203`
+4) Миграция
+```
+python manage.py makemigrations
+python manage.py migrate
+python manage.py syncdb
+```
+
+# Удаление бд и возврат #
+1) pysql DROP DATABASE stepee
+1.1) Delete all migrations
+2) CREATE DATABASE stepee OWNER stepee;
+3) ALTER USER stepee CREATEDB;
+4) python manage.py makemigrations customuser
+5) python manage.py makemigrainons
+6) python manage.py migrate
+7) python manage.py syncdb
+8) Run filldb.py
+
+# Установка и настройка #
 
 1) Установка Gulp глобально
 `npm install --global gulp`

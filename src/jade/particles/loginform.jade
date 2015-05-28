@@ -1,0 +1,9 @@
+form#loginForm(method="post" autocomplete="on" action="{% url 'login'%}")
+  |{% csrf_token %}
+  .form-group
+    input#email.input-lg.form-control(type="email" name="email" placeholder="Email")
+  .form-group
+    input#password.input-lg.form-control(type="password" name="password" placeholder="Пароль")
+    .text-right
+      a(href="#") Я забыл пароль
+  button.btn.btn-default.btn-lg.btn-block(type="submit") Войти в Stepee
