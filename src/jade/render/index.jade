@@ -1,5 +1,7 @@
 extends ../particles/base.jade
 
+|{% load partitionutils %}
+
 block content
   .container-fluid.container-first.bg-info
     .row
@@ -13,11 +15,12 @@ block content
         br
         br
   .container
+    |{% if joined_subjects %}
     .row
       .col-md-12
-        h2.page-header Доступные предметы
+        h2.page-header Изучаемые предметы
     .row
-      |{% for subject in subjects %}
+      |{% for subject, status in joined_subjects.items %}
       .col-lg-3.col-md-4.col-sm-6.col-xs-6.text-center
         .panel.panel-default
           .panel-body
@@ -25,6 +28,25 @@ block content
             a(href="{% url 'subject' subject.id %}")
               h3 {{ subject.title }}
             p {{ subject.description }}
+            p
+              b Status: {{ status }}
+      |{% endfor %}
+    |{% endif %}
+
+    .row
+      .col-md-12
+        h2.page-header Доступные предметы
+    .row
+      |{% for subject, status in other_subjects.items %}
+      .col-lg-3.col-md-4.col-sm-6.col-xs-6.text-center
+        .panel.panel-default
+          .panel-body
+            img(src="http://dummyimage.com/460x160" width="100%")
+            a(href="{% url 'subject' subject.id %}")
+              h3 {{ subject.title }}
+            p {{ subject.description }}
+            p
+              b Status: {{ status }}
       |{% endfor %}
     .row
       .col-md-12

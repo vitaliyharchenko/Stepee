@@ -1,5 +1,6 @@
 # coding=utf-8
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Главный класс для любого раздела (предмет, класс, глава, урок, параграф)
@@ -8,6 +9,10 @@ class Partition(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    @property
+    def getstatus(self):
+        return 'cnfnec'
 
 
 class NextPartitionRelation(models.Model):
@@ -25,6 +30,7 @@ class Subject(Partition):
     def __unicode__(self):
         return self.title
 
+    @property
     def getchapters(self):
         grades = Grade.objects.all()
         count = grades.count()
@@ -34,6 +40,40 @@ class Subject(Partition):
             if result.count() > 0:
                 chapters[grades[i]] = result
         return chapters
+
+    # TODO: refactor method
+    @staticmethod
+    def getjoinedsubjects(user):
+        subjects = Subject.objects.all()
+        count = subjects.count()
+        arr_joined = {}
+        for i in range(0, count):
+            try:
+                learning_status = LearningStatus.objects.get(partition=subjects[i], user=user)
+                status = learning_status.passing_status
+                if status == 'win' or status == 'work' or status == 'lose':
+                    arr_joined[subjects[i]] = status
+            except ObjectDoesNotExist:
+                pass
+        return arr_joined
+
+    # TODO: refactor method
+    @staticmethod
+    def getothersubjects(user):
+        subjects = Subject.objects.all()
+        count = subjects.count()
+        arr_others = {}
+        for i in range(0, count):
+            try:
+                learning_status = LearningStatus.objects.get(partition=subjects[i], user=user)
+                status = learning_status.passing_status
+                if status == 'win' or status == 'work' or status == 'lose':
+                    pass
+                else:
+                    arr_others[subjects[i]] = status
+            except ObjectDoesNotExist:
+                arr_others[subjects[i]] = 'closed'
+        return arr_others
 
 
 class Grade(Partition):
@@ -55,6 +95,7 @@ class Chapter(Partition):
 
     def __unicode__(self):
         return u'{} - {} - {}'.format(self.subject, self.grade, self.title)
+        # return self.title
 
 
 class Lesson(Partition):

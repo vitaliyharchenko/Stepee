@@ -19,6 +19,7 @@ block content
                 li Вася Пупкин
                 li Вася Пупкин
                 li Вася Пупкин
+      |{% if user.is_authenticated %}
       .row.extra-bottom-padding
         |{% if status and status != 'closed' %}
         .col-md-6
@@ -36,10 +37,19 @@ block content
         .col-md-6
           button.btn.btn-default(href="") Начать курс
         |{% endif %}
+      |{% else %}
+      .row.extra-bottom-padding
+        .col-md-6
+          button.btn.btn-default(href="") Начать курс
+      |{% endif %}
   .container
     .row
+      |{% if user.is_authenticated %}
       .col-md-12
-        |{% for grade, chapters in dict.items %}
+        h1 User is authenticated
+      |{% else %}
+      .col-md-12
+        |{% for grade, chapters in chapters.items %}
         h2.page-header {{ grade }}
         .row
           |{% for chapter in chapters %}
@@ -50,8 +60,9 @@ block content
                 p 32 занятия
                 h3 Завершено!
                 p Оценка 78%
-                a.btn.btn-default.btn-sm(href="{% url 'chapter' chapter.id %}") Повторить
+                a.btn.btn-default.btn-sm(href="#" data-toggle="modal" data-target="#regModal") Приступить
           |{% endfor %}
         |{% endfor %}
         br
         br
+      |{% endif %}

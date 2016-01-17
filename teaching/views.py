@@ -11,8 +11,9 @@ def subjects(request):
 
 def subject(request, subject_id):
     sub = Subject.objects.get(id=subject_id)
-    args = {'subject': sub,
-            'dict': sub.getchapters()}
+    args = {}
+    args['subject'] = sub
+    args['chapters'] = sub.getchapters
     if request.user.is_authenticated():
         learning_status = LearningStatus.objects.get(partition=sub, user=request.user)
         status = learning_status.passing_status
